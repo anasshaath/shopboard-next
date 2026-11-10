@@ -2,6 +2,10 @@
 
 ShopBoard is a Next.js App Router storefront. Product data is fetched and validated on the server; cart and checkout interactions are small Client Component leaves.
 
+## Live Demo
+
+[https://shopboard-next-beta.vercel.app/](https://shopboard-next-beta.vercel.app/)
+
 ## Commands
 
 - `npm run dev` — development server.
