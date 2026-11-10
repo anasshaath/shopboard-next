@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+:root {
+  --shop-surface: #fcfaf7;
+  --shop-panel: #ffffff;
+  --shop-ink: #1c1a1d;
+  --shop-muted: #5f574f;
+  --shop-line: #ded8d0;
+  --shop-accent: #865a40;
+  --shop-accent-soft: #eee7df;
+  --shop-action: #2e2a27;
+  --shop-action-hover: #514c47;
+  --shop-action-foreground: #fffdf9;
+  --shop-positive: #356047;
+  --shop-positive-soft: #e4f0e6;
+  --shop-danger: #9b2c2c;
+  --shop-danger-soft: #f8e5e5;
+  --shop-focus: #865a40;
+  --shop-backdrop: rgb(28 26 29 / 0.62);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --shop-surface: #211d19;
+    --shop-panel: #2c2722;
+    --shop-ink: #f8f2ea;
+    --shop-muted: #d1c5b8;
+    --shop-line: #544a40;
+    --shop-accent: #e5bb91;
+    --shop-accent-soft: #49392e;
+    --shop-action: #e5bb91;
+    --shop-action-hover: #f2cfaa;
+    --shop-action-foreground: #2a211b;
+    --shop-positive: #9bd6aa;
+    --shop-positive-soft: #294234;
+    --shop-danger: #f1a4a4;
+    --shop-danger-soft: #512d2d;
+    --shop-focus: #f2cfaa;
+    --shop-backdrop: rgb(0 0 0 / 0.7);
+  }
+}
+
+@theme inline {
+  --color-surface: var(--shop-surface);
+  --color-panel: var(--shop-panel);
+  --color-ink: var(--shop-ink);
+  --color-muted: var(--shop-muted);
+  --color-line: var(--shop-line);
+  --color-accent: var(--shop-accent);
+  --color-accent-soft: var(--shop-accent-soft);
+  --color-action: var(--shop-action);
+  --color-action-hover: var(--shop-action-hover);
+  --color-action-foreground: var(--shop-action-foreground);
+  --color-positive: var(--shop-positive);
+  --color-positive-soft: var(--shop-positive-soft);
+  --color-danger: var(--shop-danger);
+  --color-danger-soft: var(--shop-danger-soft);
+  --color-focus: var(--shop-focus);
+  --color-backdrop: var(--shop-backdrop);
+  --radius-card: 0.75rem;
+  --radius-control: 0.375rem;
+  --radius-badge: 9999px;
+  --font-sans: var(--font-geist-sans);
+}
+
+* { box-sizing: border-box; }
+html { background: var(--shop-surface); }
+body { margin: 0; background: var(--shop-surface); color: var(--shop-ink); }
+a, button, input { -webkit-tap-highlight-color: transparent; }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--shop-focus); outline-offset: 4px; }
+
+dialog::backdrop {
+  background: var(--shop-backdrop);
+}
