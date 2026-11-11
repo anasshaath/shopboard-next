@@ -9,3 +9,5 @@ ShopBoard uses Next.js App Router. `app/` contains routes and route boundaries; 
 - Preserve visible focus, semantic headings, labels, and keyboard support; test assistive and keyboard paths when a browser is available.
 - Keep Client Component boundaries narrow: use them only for state, effects, events, or browser APIs. Keep pages and data fetching on the server.
 - Review reusable UI primitives for lifecycle, responsive behavior, and accessibility before integrating them into routes.
+
+Never change *.test.ts, *.test.tsx, or tests in e2e/ merely to make a failing test pass. Fix the implementation, or ask me if the expected behavior is unclear.

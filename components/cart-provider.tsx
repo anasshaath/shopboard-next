@@ -8,13 +8,11 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { addCartItem, changeCartItemQuantity, type CartItem } from "@/lib/cart";
 
 const storageKey = "shopboard-cart";
 
-export interface CartItem {
-  id: number;
-  qty: number;
-}
+export type { CartItem } from "@/lib/cart";
 
 export interface CartValue {
   add: (id: number) => void;
@@ -83,22 +81,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   const value = useMemo<CartValue>(
     () => ({
-      add: (id) =>
-        setItems((current) =>
-          current.some((item) => item.id === id)
-            ? current.map((item) =>
-                item.id === id ? { ...item, qty: item.qty + 1 } : item,
-              )
-            : [...current, { id, qty: 1 }],
-        ),
-      changeQuantity: (id, amount) =>
-        setItems((current) =>
-          current
-            .map((item) =>
-              item.id === id ? { ...item, qty: item.qty + amount } : item,
-            )
-            .filter((item) => item.qty > 0),
-        ),
+      add: (id) => setItems((current) => addCartItem(current, id)),
+      changeQuantity: (id, amount) => setItems((current) => changeCartItemQuantity(current, id, amount)),
       clear: () => setItems([]),
       hasHydrated,
       itemCount: items.reduce((count, item) => count + item.qty, 0),

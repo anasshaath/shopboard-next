@@ -14,6 +14,13 @@ ShopBoard is a Next.js App Router storefront. Product data is fetched and valida
 - `npm run build` — production build.
 - `npm run start` — serves a completed production build.
 
+## Testing
+
+- `npm test` runs the Vitest cart and component tests.
+- `npm run test:e2e` installs Chromium when needed, starts the local app, and runs the Playwright checkout flow.
+
+Use `npm test` for fast unit/component feedback. Run `npm run test:e2e` for the browser checkout journey; it uses isolated storage and a deterministic local fixture served to the application's server-side product fetches.
+
 ## Routes
 
 | Route | Purpose |
