@@ -15,7 +15,7 @@ const apiServer = createServer((request, response) => {
 function stop() { nextProcess?.kill(); apiServer.close(); }
 apiServer.listen(apiPort, "127.0.0.1", () => {
   nextProcess = spawn(process.execPath, ["node_modules/next/dist/bin/next", "dev"], {
-    env: { ...process.env, SHOPBOARD_API_BASE_URL: `http://127.0.0.1:${apiPort}` },
+    env: { ...process.env, API_URL: `http://127.0.0.1:${apiPort}/api` },
     stdio: "inherit",
   });
   nextProcess.on("exit", (code) => process.exit(code ?? 0));

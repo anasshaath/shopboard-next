@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { expect, it } from "vitest";
 import { CheckoutPage } from "@/components/checkout/checkout-page";
 import { CartProvider } from "@/components/cart-provider";
-import type { Product } from "@/lib/products";
+import type { Product } from "@/lib/product-types";
 
 const products: Product[] = [{ id: 1, name: "Leather Tote Bag", price: 89, category: "Bags", inStock: true }];
 

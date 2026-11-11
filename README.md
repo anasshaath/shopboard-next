@@ -42,7 +42,7 @@ Use `npm test` for fast unit/component feedback. Run `npm run test:e2e` for the 
 
 ## API configuration
 
-Leave `SHOPBOARD_API_BASE_URL` unset for the normal API at `https://shopboard-api.vercel.app`. Use `.env.example` as the configuration reference; never commit real local environment files.
+Copy `.env.example` to `.env.local` and set `API_URL` to the server-side product API base, for example `https://shopboard-api.vercel.app/api`. Never commit real local environment files or expose server configuration with a `NEXT_PUBLIC_` prefix.
 
 ## Verification limits
 

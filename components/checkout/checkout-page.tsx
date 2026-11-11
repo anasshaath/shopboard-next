@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useCart } from "@/components/cart-provider";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { formatPrice, type Product } from "@/lib/products";
+import { formatPrice, type Product } from "@/lib/product-types";
 
 export function CheckoutPage({ products }: { products: Product[] }) {
   const { clear, hasHydrated, items } = useCart();

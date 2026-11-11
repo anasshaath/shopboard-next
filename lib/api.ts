@@ -1,6 +1,4 @@
-const defaultBaseUrl = "https://shopboard-api.vercel.app";
-
-export const apiBaseUrl = process.env.SHOPBOARD_API_BASE_URL?.replace(/\/$/, "") ?? defaultBaseUrl;
+import { env } from "@/lib/env";
 
 export class ApiError extends Error {
   constructor(message: string, public readonly status: number) {
@@ -10,7 +8,7 @@ export class ApiError extends Error {
 }
 
 export async function fetchJson<T>(path: string, decode: (value: unknown) => T): Promise<T> {
-  const response = await fetch(`${apiBaseUrl}${path}`, { cache: "no-store" });
+  const response = await fetch(`${env.apiUrl}/${path.replace(/^\/+/, "")}`, { cache: "no-store" });
   if (!response.ok) throw new ApiError(`Request failed with status ${response.status}.`, response.status);
 
   let payload: unknown;

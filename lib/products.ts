@@ -1,7 +1,7 @@
 import { ApiError, fetchJson } from "@/lib/api";
+import { type Category, type Product } from "@/lib/product-types";
 
-export type Category = "Bags" | "Shoes" | "Accessories";
-export interface Product { id: number; name: string; price: number; category: Category; inStock: boolean; }
+export { formatPrice, type Category, type Product } from "@/lib/product-types";
 interface ApiProduct { id: number; title: string; category_name: string; price_cents: number; in_stock: boolean; }
 interface ApiProductsResponse { items: ApiProduct[]; total: number; }
 
@@ -26,7 +26,6 @@ function decodeProductsResponse(value: unknown): ApiProductsResponse {
   return { items: items.map(decodeApiProduct), total };
 }
 function toProduct(product: ApiProduct): Product { return { id: product.id, name: product.title, category: decodeCategory(product.category_name), price: product.price_cents / 100, inStock: product.in_stock }; }
-export function formatPrice(price: number) { return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(price); }
 export function parseProductId(value: string): number | null { if (!/^[1-9]\d*$/.test(value)) return null; const id = Number(value); return Number.isSafeInteger(id) ? id : null; }
-export async function getProducts(): Promise<Product[]> { return (await fetchJson("/api/products", decodeProductsResponse)).items.map(toProduct); }
-export async function getProduct(id: number): Promise<Product | null> { try { return toProduct(await fetchJson(`/api/products/${id}`, decodeApiProduct)); } catch (error) { if (error instanceof ApiError && error.status === 404) return null; throw error; } }
+export async function getProducts(): Promise<Product[]> { return (await fetchJson("products", decodeProductsResponse)).items.map(toProduct); }
+export async function getProduct(id: number): Promise<Product | null> { try { return toProduct(await fetchJson(`products/${id}`, decodeApiProduct)); } catch (error) { if (error instanceof ApiError && error.status === 404) return null; throw error; } }

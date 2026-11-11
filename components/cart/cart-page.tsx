@@ -5,7 +5,7 @@ import { useCart } from "@/components/cart-provider";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { formatPrice, type Product } from "@/lib/products";
+import { formatPrice, type Product } from "@/lib/product-types";
 
 export function CartPage({ products }: { products: Product[] }) {
   const { changeQuantity, hasHydrated, items, remove } = useCart();

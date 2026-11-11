@@ -4,8 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import type { Product } from "@/lib/products";
-import { formatPrice } from "@/lib/products";
+import { formatPrice, type Product } from "@/lib/product-types";
 
 interface ProductCardProps { product: Product; }
 

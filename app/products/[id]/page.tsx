@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Link from "next/link";
 import { AddToCartButton } from "@/components/cart/add-to-cart-button";
 import { Badge } from "@/components/ui/badge";
@@ -5,8 +6,12 @@ import { buttonVariants } from "@/components/ui/button";
 import { notFound } from "next/navigation";
 import { formatPrice, getProduct, parseProductId } from "@/lib/products";
 
-export default async function ProductPage(props: PageProps<"/products/[id]">) {
-  const { id: rawId } = await props.params;
+export default function ProductPage(props: PageProps<"/products/[id]">) {
+  return <Suspense fallback={<p className="py-12 text-muted">Loading product…</p>}><ProductData params={props.params} /></Suspense>;
+}
+
+async function ProductData({ params }: Pick<PageProps<"/products/[id]">, "params">) {
+  const { id: rawId } = await params;
   const id = parseProductId(rawId);
 
   if (id === null) {
